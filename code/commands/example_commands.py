@@ -8,7 +8,7 @@ import constants
 ##       (Change the import line so that it imports your subsystem by its
 ##        correct name.)
 ##
-from subsystems.example_ss import ExampleSubsystem
+from subsystems.motor_ss import Motor_Subsystem
 
 
 ## TODO: Change this for your robot!
@@ -26,7 +26,7 @@ class TemplateCommand(commands2.Command):
     ##       (Change the name and class of the constructor's subsystem
     ##        parameter.)
     ##
-    def __init__(self, example_ss: ExampleSubsystem) -> None:
+    def __init__(self, example_ss: Motor_Subsystem) -> None:
         """
         Constructor for the command object.  Assigns some instance variables.
         """
