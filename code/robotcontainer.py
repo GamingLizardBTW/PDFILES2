@@ -13,7 +13,7 @@ import commands2.button
 
 from constants import OP
 import subsystems.Motor_ss 
-from commands.motor_commands import MovingMotors
+from commands.motor_commands import ForwardSpin, ReverseSpin, StopSpin
 
 from wpilib import XboxController
 
@@ -44,7 +44,8 @@ class RobotContainer:
         ## TODO: Change this for your robot!
         ##       (Use your subsystems, and change the variable name.)
         ##
-        motorsub = subsystems.Motor_ss.Motor_Subsystem()
+        #motorsub = subsystems.Motor_ss.Motor_Subsystem()
+        self.motorsub = subsystems.Motor_ss.Motor_Subsystem
 
         # Configure the button bindings
         self.configureButtonBindings()
@@ -63,7 +64,10 @@ class RobotContainer:
         ##       buttons you choose.)
         ##
         # run the example command when the left bumper is pressed
-        self.motorsub.setDefaultCommand(MovingMotors(self.motorsub))
+        self.OperatorController.leftBumper().whileTrue(ForwardSpin(self.motorsub))
+        self.OperatorController.leftBumper().whileFalse(StopSpin(self.motorsub))
+        self.OperatorController.rightBumper().whileTrue(ReverseSpin(self.motorsub))
+        self.OperatorController.rightBumper().whileFalse(StopSpin(self.motorsub))
 
 
         # run the example command when the X button is pressed

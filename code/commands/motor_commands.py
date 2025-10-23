@@ -17,7 +17,7 @@ from subsystems.Motor_ss import Motor_Subsystem
 ## TODO: Change this for your robot!
 ##       (Give your command class a descriptive class name.)
 ##
-class MovingMotors(commands2.Command):
+class  ForwardSpin(commands2.Command):
     ## TODO: Change this for your robot!
     ##       This command moves the motor forward
     ##
@@ -56,7 +56,7 @@ class MovingMotors(commands2.Command):
         ##        this command need to do anything to set up?  If so, put that
         ##        code here.)
         ##
-        self.Motor_ss.activate_actuator()
+        #self.Motor_ss.activate_actuator()
         log.info("Forward Command Initialized")
 
     def execute(self):
@@ -70,16 +70,7 @@ class MovingMotors(commands2.Command):
         ##        code here.  If you don't need to do anything continuously,
         ##        you can delete the entire execute() method.)
         ##
-        self.lefttrigger = XboxController(1).getLeftTriggerAxis()
-        self.righttrigger = XboxController(1).getRightTriggerAxis()
-        self.calculated_input = self.righttrigger - self.lefttrigger
-        if self.calculated_input >= 0.05:
-            self.motorsub.go_forward()
-        elif self.calculated_input <= -0.05:
-            self.motorsub.go_reverse()
-        else:
-            self.motorsub.stop()
-        log.info("x")
+        self.motorsub.go_forward
 
 
     def isFinished(self):
@@ -112,3 +103,174 @@ class MovingMotors(commands2.Command):
 
         self.motorsub.stop()
 
+class  ReverseSpin(commands2.Command):
+    ## TODO: Change this for your robot!
+    ##       This command moves the motor forward
+    ##
+    """
+    This class is a template for how commands for your robot should be
+    structured.
+    """
+    ## TODO: Change this for your robot!
+    ##       (Change the name and class of the constructor's subsystem
+    ##        parameter.)
+    ##
+    def __init__(self, motorsubsystem: Motor_Subsystem) -> None:
+        """
+        Constructor for the command object.  Assigns some instance variables.
+        """
+
+
+        # addRequirements() declares that this command needs exclusive use of
+        # this subsystem.  If another command that needs this subsystem gets
+        # scheduled to run, this command won't be able to run anymore, so it
+        # will get cancelled.  For example, commands such as RaiseElevator and
+        # LowerElevator both use the Elevator subsystem and can't run at the
+        # same time, so they must each call addRequirements(self.elevator_ss)
+        #
+        self.addRequirements(self.Motor_ss)
+        self.motorsub = Motor_Subsystem
+
+    def initialize(self):
+        """
+        Perform any setup to initialize the command, and/or perform any
+        command that can be completed all in one shot.
+        This method runs when the scheduler schedules the command.
+        """
+        ## TODO: Change this for your robot!
+        ##       (Can this command do everything in one shot?  If not, does
+        ##        this command need to do anything to set up?  If so, put that
+        ##        code here.)
+        ##
+        #self.Motor_ss.activate_actuator()
+        log.info("Reverse Command Initialized")
+
+    def execute(self):
+        """
+        Performs the main part of any command that needs to happen on an
+        ongoing basis, such as continuously reading a joystick.
+        This method runs 50 times a second while the command is active.
+        """
+        ## TODO: Change this for your robot!
+        ##       (What does this command need to do continuously?  Put that
+        ##        code here.  If you don't need to do anything continuously,
+        ##        you can delete the entire execute() method.)
+        ##
+        self.motorsub.go_reverse
+
+
+    def isFinished(self):
+        """
+        Returns a boolean indicating whether the command has completed.
+        """
+        ## TODO: Change this for your robot!
+        ##       (What test determines whether this command has completed?  If
+        ##        you did everything in initialize(), then then command has
+        ##        already completed (and will always have completed), so you
+        ##        can just return True.)
+        ##
+
+        # stop the motor if the sensor value is over 5.0
+        #return self.Motor_ss.sensor_value() > 5.0
+        return False
+
+    def end(self, interrupted: bool):
+        """
+        Perform any cleanup or final steps needed after the command finishes.
+        If you need to do something different depending on whether the command
+        completed normally or was interrupted (by another command), the
+        :interrupted: parameter will be True if the command was interrupted.
+        """
+        ## TODO: Change this for your robot!
+        ##       (Does your command need to do anything once at the end?  If
+        ##        so, put that code here.  If you don't need to do anything,
+        ##        you can delete the entire end() method.)
+        ##
+
+        self.motorsub.stop()
+
+class  StopSpin(commands2.Command):
+    ## TODO: Change this for your robot!
+    ##       This command moves the motor forward
+    ##
+    """
+    This class is a template for how commands for your robot should be
+    structured.
+    """
+    ## TODO: Change this for your robot!
+    ##       (Change the name and class of the constructor's subsystem
+    ##        parameter.)
+    ##
+    def __init__(self, motorsubsystem: Motor_Subsystem) -> None:
+        """
+        Constructor for the command object.  Assigns some instance variables.
+        """
+
+
+        # addRequirements() declares that this command needs exclusive use of
+        # this subsystem.  If another command that needs this subsystem gets
+        # scheduled to run, this command won't be able to run anymore, so it
+        # will get cancelled.  For example, commands such as RaiseElevator and
+        # LowerElevator both use the Elevator subsystem and can't run at the
+        # same time, so they must each call addRequirements(self.elevator_ss)
+        #
+        self.addRequirements(self.Motor_ss)
+        self.motorsub = Motor_Subsystem
+
+    def initialize(self):
+        """
+        Perform any setup to initialize the command, and/or perform any
+        command that can be completed all in one shot.
+        This method runs when the scheduler schedules the command.
+        """
+        ## TODO: Change this for your robot!
+        ##       (Can this command do everything in one shot?  If not, does
+        ##        this command need to do anything to set up?  If so, put that
+        ##        code here.)
+        ##
+        #self.Motor_ss.activate_actuator()
+        log.info("Forward Command Initialized")
+
+    def execute(self):
+        """
+        Performs the main part of any command that needs to happen on an
+        ongoing basis, such as continuously reading a joystick.
+        This method runs 50 times a second while the command is active.
+        """
+        ## TODO: Change this for your robot!
+        ##       (What does this command need to do continuously?  Put that
+        ##        code here.  If you don't need to do anything continuously,
+        ##        you can delete the entire execute() method.)
+        ##
+        self.motorsub.stop
+
+
+    def isFinished(self):
+        """
+        Returns a boolean indicating whether the command has completed.
+        """
+        ## TODO: Change this for your robot!
+        ##       (What test determines whether this command has completed?  If
+        ##        you did everything in initialize(), then then command has
+        ##        already completed (and will always have completed), so you
+        ##        can just return True.)
+        ##
+
+        # stop the motor if the sensor value is over 5.0
+        #return self.Motor_ss.sensor_value() > 5.0
+        return False
+
+    def end(self, interrupted: bool):
+        """
+        Perform any cleanup or final steps needed after the command finishes.
+        If you need to do something different depending on whether the command
+        completed normally or was interrupted (by another command), the
+        :interrupted: parameter will be True if the command was interrupted.
+        """
+        ## TODO: Change this for your robot!
+        ##       (Does your command need to do anything once at the end?  If
+        ##        so, put that code here.  If you don't need to do anything,
+        ##        you can delete the entire end() method.)
+        ##
+
+        self.motorsub.stop()
