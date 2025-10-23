@@ -15,7 +15,7 @@ from constants import OP
 import subsystems.Motor_ss 
 from commands.motor_commands import ForwardSpin, ReverseSpin, StopSpin
 
-from wpilib import XboxController
+from wpilib import PS5Controller
 
 class RobotContainer:
     """
@@ -37,7 +37,7 @@ class RobotContainer:
         # subsystem needs to access the controller, pass self.stick in to
         # the subsystem's constructor.
         #
-        self.stick = commands2.button.CommandXboxController(OP.joystick_port)
+        self.stick = commands2.button.CommandPS4Controller(OP.joystick_port)
         
 
         # The robot's subsystems
