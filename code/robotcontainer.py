@@ -37,7 +37,7 @@ class RobotContainer:
         # subsystem needs to access the controller, pass self.stick in to
         # the subsystem's constructor.
         #
-        self.stick = commands2.button.CommandPS5Controller(OP.joystick_port)
+        self.stick = commands2.button.CommandXboxController(OP.joystick_port)
 
         # The robot's subsystems
         #
