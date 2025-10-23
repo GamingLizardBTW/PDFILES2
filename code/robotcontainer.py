@@ -38,6 +38,7 @@ class RobotContainer:
         # the subsystem's constructor.
         #
         self.stick = commands2.button.CommandXboxController(OP.joystick_port)
+        
 
         # The robot's subsystems
         #
@@ -64,10 +65,10 @@ class RobotContainer:
         ##       buttons you choose.)
         ##
         # run the example command when the left bumper is pressed
-        self.OperatorController.leftBumper().whileTrue(ForwardSpin(self.motorsub))
-        self.OperatorController.leftBumper().whileFalse(StopSpin(self.motorsub))
-        self.OperatorController.rightBumper().whileTrue(ReverseSpin(self.motorsub))
-        self.OperatorController.rightBumper().whileFalse(StopSpin(self.motorsub))
+        self.stick.leftBumper().whileTrue(ForwardSpin(self.motorsub))
+        self.stick.leftBumper().whileFalse(StopSpin(self.motorsub))
+        self.stick.rightBumper().whileTrue(ReverseSpin(self.motorsub))
+        self.stick.rightBumper().whileFalse(StopSpin(self.motorsub))
 
 
         # run the example command when the X button is pressed
