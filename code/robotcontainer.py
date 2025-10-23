@@ -15,7 +15,7 @@ from constants import OP
 import subsystems.Motor_ss 
 from commands.motor_commands import MovingMotors
 
-from wpilib import PS5Controller
+from wpilib import XboxController
 
 class RobotContainer:
     """
@@ -63,7 +63,7 @@ class RobotContainer:
         ##       buttons you choose.)
         ##
         # run the example command when the left bumper is pressed
-        self.stick.setDefaultCommand(MovingMotors(self.motorsub))
+        self.motorsub.setDefaultCommand(MovingMotors(self.motorsub))
 
 
         # run the example command when the X button is pressed

@@ -2,7 +2,7 @@ import logging
 log = logging.Logger('P212-robot')
 #logger = logging.getLogger("motorsubsystemlogger")
 
-from wpilib import PS5Controller
+from wpilib import XboxController
 
 import commands2
 import constants
@@ -70,8 +70,8 @@ class MovingMotors(commands2.Command):
         ##        code here.  If you don't need to do anything continuously,
         ##        you can delete the entire execute() method.)
         ##
-        self.lefttrigger = PS5Controller(1).getLeftTriggerAxis()
-        self.righttrigger = PS5Controller(1).getRightTriggerAxis()
+        self.lefttrigger = XboxController(1).getLeftTriggerAxis()
+        self.righttrigger = XboxController(1).getRightTriggerAxis()
         self.calculated_input = self.righttrigger - self.lefttrigger
         if self.calculated_input >= 0.05:
             self.motorsub.go_forward()
