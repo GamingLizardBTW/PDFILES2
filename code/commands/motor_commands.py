@@ -12,7 +12,7 @@ import constants
 ##        correct name.)
 ##
 from subsystems.Motor_ss import Motor_Subsystem
-
+import subsystems.Motor_ss
 
 ## TODO: Change this for your robot!
 ##       (Give your command class a descriptive class name.)
@@ -46,30 +46,11 @@ class  ForwardSpin(commands2.Command):
         self.motorsub = Motor_Subsystem
 
     def initialize(self):
-        """
-        Perform any setup to initialize the command, and/or perform any
-        command that can be completed all in one shot.
-        This method runs when the scheduler schedules the command.
-        """
-        ## TODO: Change this for your robot!
-        ##       (Can this command do everything in one shot?  If not, does
-        ##        this command need to do anything to set up?  If so, put that
-        ##        code here.)
-        ##
-        #self.Motor_ss.activate_actuator()
+
         log.info("Forward Command Initialized")
 
     def execute(self):
-        """
-        Performs the main part of any command that needs to happen on an
-        ongoing basis, such as continuously reading a joystick.
-        This method runs 50 times a second while the command is active.
-        """
-        ## TODO: Change this for your robot!
-        ##       (What does this command need to do continuously?  Put that
-        ##        code here.  If you don't need to do anything continuously,
-        ##        you can delete the entire execute() method.)
-        ##
+        
         self.motorsub.go_forward
 
 
