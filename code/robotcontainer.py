@@ -12,9 +12,10 @@ import commands2
 import commands2.button
 
 from constants import OP
-import subsystems.example_ss
-from commands.example_commands import TemplateCommand
+import subsystems.Motor_ss 
+from commands.motor_commands import MovingMotors
 
+from wpilib import PS5Controller
 
 class RobotContainer:
     """
@@ -36,14 +37,14 @@ class RobotContainer:
         # subsystem needs to access the controller, pass self.stick in to
         # the subsystem's constructor.
         #
-        self.stick = commands2.button.CommandXboxController(OP.joystick_port)
+        self.stick = commands2.button.CommandPS5Controller(OP.joystick_port)
 
         # The robot's subsystems
         #
         ## TODO: Change this for your robot!
         ##       (Use your subsystems, and change the variable name.)
         ##
-        self.my_example_ss = subsystems.example_ss.ExampleSubsystem()
+        motorsub = subsystems.Motor_ss.Motor_Subsystem()
 
         # Configure the button bindings
         self.configureButtonBindings()
@@ -62,10 +63,10 @@ class RobotContainer:
         ##       buttons you choose.)
         ##
         # run the example command when the left bumper is pressed
-        self.stick.leftBumper().onTrue(TemplateCommand(self.my_example_ss))
+        self.stick.setDefaultCommand(MovingMotors(self.motorsub))
+
 
         # run the example command when the X button is pressed
-        self.stick.x().onTrue(TemplateCommand(self.my_example_ss))
 
 
     def all_subsystems(self):
