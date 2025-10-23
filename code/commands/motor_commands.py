@@ -12,7 +12,7 @@ import constants
 ##        correct name.)
 ##
 from subsystems.Motor_ss import Motor_Subsystem
-import subsystems.Motor_ss
+
 
 ## TODO: Change this for your robot!
 ##       (Give your command class a descriptive class name.)
@@ -42,7 +42,7 @@ class  ForwardSpin(commands2.Command):
         # LowerElevator both use the Elevator subsystem and can't run at the
         # same time, so they must each call addRequirements(self.elevator_ss)
         #
-        self.addRequirements(self.Motor_ss)
+        #self.addRequirements(self.Motor_ss)
         self.motorsub = Motor_Subsystem
 
     def initialize(self):
@@ -109,7 +109,7 @@ class  ReverseSpin(commands2.Command):
         # LowerElevator both use the Elevator subsystem and can't run at the
         # same time, so they must each call addRequirements(self.elevator_ss)
         #
-        self.addRequirements(self.Motor_ss)
+        #self.addRequirements(self.Motor_ss)
         self.motorsub = Motor_Subsystem
 
     def initialize(self):
@@ -195,7 +195,7 @@ class  StopSpin(commands2.Command):
         # LowerElevator both use the Elevator subsystem and can't run at the
         # same time, so they must each call addRequirements(self.elevator_ss)
         #
-        self.addRequirements(self.Motor_ss)
+        #self.addRequirements(self.Motor_ss)
         self.motorsub = Motor_Subsystem
 
     def initialize(self):
