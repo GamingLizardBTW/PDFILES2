@@ -15,7 +15,7 @@ from constants import OP
 import subsystems.Motor_ss 
 from commands.motor_commands import ForwardSpin, ReverseSpin, StopSpin
 
-from wpilib import PS5Controller
+from wpilib import XboxController
 
 class RobotContainer:
     """

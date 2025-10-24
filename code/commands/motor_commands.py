@@ -2,7 +2,7 @@ import logging
 log = logging.Logger('P212-robot')
 #logger = logging.getLogger("motorsubsystemlogger")
 
-from wpilib import PS5Controller
+from wpilib import XboxController
 
 import commands2
 import constants
