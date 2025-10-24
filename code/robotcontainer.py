@@ -40,10 +40,10 @@ class RobotContainer:
 
     def configureButtonBindings(self):
         #Xbox controller
-        #self.stick.leftBumper().whileTrue(ForwardSpin(self.motorsub))
-        #self.stick.leftBumper().whileFalse(StopSpin(self.motorsub))
-        #self.stick.rightBumper().whileTrue(ReverseSpin(self.motorsub))
-        #self.stick.rightBumper().whileFalse(StopSpin(self.motorsub))
+        #self.stick.leftBumper().onTrue(ForwardSpin(self.motorsub))
+        #self.stick.leftBumper().onFalse(StopSpin(self.motorsub))
+        #self.stick.rightBumper().onTrue(ReverseSpin(self.motorsub))
+        #self.stick.rightBumper().onFalse(StopSpin(self.motorsub))
         
         #PS5 controller
         Trigger(lambda: self.PS5.getL1Button()).onTrue(ForwardSpin(self.motorsub))
