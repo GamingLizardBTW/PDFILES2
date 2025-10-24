@@ -2,7 +2,7 @@ import logging
 log = logging.Logger('P212-robot')
 #logger = logging.getLogger("motorsubsystemlogger")
 
-from wpilib import XboxController
+
 
 import commands2
 import constants
@@ -14,21 +14,13 @@ import constants
 from subsystems.Motor_ss import Motor_Subsystem
 
 
-## TODO: Change this for your robot!
-##       (Give your command class a descriptive class name.)
-##
 class  ForwardSpin(commands2.Command):
-    ## TODO: Change this for your robot!
-    ##       This command moves the motor forward
-    ##
+
     """
     This class is a template for how commands for your robot should be
     structured.
     """
-    ## TODO: Change this for your robot!
-    ##       (Change the name and class of the constructor's subsystem
-    ##        parameter.)
-    ##
+
     def __init__(self, motorsubsystem: Motor_Subsystem) -> None:
         """
         Constructor for the command object.  Assigns some instance variables.
@@ -52,21 +44,14 @@ class  ForwardSpin(commands2.Command):
     def execute(self):
         
         self.motorsub.go_forward
+        log.info("Forward Command Running")
 
 
     def isFinished(self):
         """
         Returns a boolean indicating whether the command has completed.
         """
-        ## TODO: Change this for your robot!
-        ##       (What test determines whether this command has completed?  If
-        ##        you did everything in initialize(), then then command has
-        ##        already completed (and will always have completed), so you
-        ##        can just return True.)
-        ##
 
-        # stop the motor if the sensor value is over 5.0
-        #return self.Motor_ss.sensor_value() > 5.0
         return False
 
     def end(self, interrupted: bool):
@@ -76,26 +61,16 @@ class  ForwardSpin(commands2.Command):
         completed normally or was interrupted (by another command), the
         :interrupted: parameter will be True if the command was interrupted.
         """
-        ## TODO: Change this for your robot!
-        ##       (Does your command need to do anything once at the end?  If
-        ##        so, put that code here.  If you don't need to do anything,
-        ##        you can delete the entire end() method.)
-        ##
 
         self.motorsub.stop()
 
 class  ReverseSpin(commands2.Command):
-    ## TODO: Change this for your robot!
-    ##       This command moves the motor forward
-    ##
+
     """
     This class is a template for how commands for your robot should be
     structured.
     """
-    ## TODO: Change this for your robot!
-    ##       (Change the name and class of the constructor's subsystem
-    ##        parameter.)
-    ##
+
     def __init__(self, motorsubsystem: Motor_Subsystem) -> None:
         """
         Constructor for the command object.  Assigns some instance variables.
@@ -118,12 +93,7 @@ class  ReverseSpin(commands2.Command):
         command that can be completed all in one shot.
         This method runs when the scheduler schedules the command.
         """
-        ## TODO: Change this for your robot!
-        ##       (Can this command do everything in one shot?  If not, does
-        ##        this command need to do anything to set up?  If so, put that
-        ##        code here.)
-        ##
-        #self.Motor_ss.activate_actuator()
+
         log.info("Reverse Command Initialized")
 
     def execute(self):
@@ -132,27 +102,17 @@ class  ReverseSpin(commands2.Command):
         ongoing basis, such as continuously reading a joystick.
         This method runs 50 times a second while the command is active.
         """
-        ## TODO: Change this for your robot!
-        ##       (What does this command need to do continuously?  Put that
-        ##        code here.  If you don't need to do anything continuously,
-        ##        you can delete the entire execute() method.)
-        ##
         self.motorsub.go_reverse
+        log.info("Reverse Command Initialized")
+
+        
 
 
     def isFinished(self):
         """
         Returns a boolean indicating whether the command has completed.
         """
-        ## TODO: Change this for your robot!
-        ##       (What test determines whether this command has completed?  If
-        ##        you did everything in initialize(), then then command has
-        ##        already completed (and will always have completed), so you
-        ##        can just return True.)
-        ##
 
-        # stop the motor if the sensor value is over 5.0
-        #return self.Motor_ss.sensor_value() > 5.0
         return False
 
     def end(self, interrupted: bool):
@@ -162,11 +122,7 @@ class  ReverseSpin(commands2.Command):
         completed normally or was interrupted (by another command), the
         :interrupted: parameter will be True if the command was interrupted.
         """
-        ## TODO: Change this for your robot!
-        ##       (Does your command need to do anything once at the end?  If
-        ##        so, put that code here.  If you don't need to do anything,
-        ##        you can delete the entire end() method.)
-        ##
+
 
         self.motorsub.stop()
 
@@ -210,7 +166,7 @@ class  StopSpin(commands2.Command):
         ##        code here.)
         ##
         #self.Motor_ss.activate_actuator()
-        log.info("Forward Command Initialized")
+        log.info("Stop Command Initialized")
 
     def execute(self):
         """
@@ -224,6 +180,8 @@ class  StopSpin(commands2.Command):
         ##        you can delete the entire execute() method.)
         ##
         self.motorsub.stop
+        log.info("Stop Command Running")
+
 
 
     def isFinished(self):

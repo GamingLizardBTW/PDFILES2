@@ -13,6 +13,9 @@ import commands2.button
 
 from constants import OP
 import subsystems.Motor_ss 
+from subsystems.Motor_ss import Motor_Subsystem
+
+import commands.motor_commands
 from commands.motor_commands import ForwardSpin, ReverseSpin, StopSpin
 
 from wpilib import XboxController
@@ -88,4 +91,4 @@ class RobotContainer:
 
 
     def get_autonomous_command(self):
-        return None
+        pass
