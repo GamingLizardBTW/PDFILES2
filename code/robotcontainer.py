@@ -6,75 +6,38 @@
 
 import logging
 log = logging.Logger('P212-robot')
-
 import wpilib
 import commands2
 import commands2.button
-
 from commands2.button import Trigger
-
-
 from constants import OP
-import subsystems.Motor_ss 
-from subsystems.Motor_ss import Motor_Subsystem
-
-import commands.motor_commands
-from commands.motor_commands import ForwardSpin, ReverseSpin, StopSpin
-
 #from wpilib import XboxController
 from wpilib import PS5Controller
 
+#Subsystems
+import subsystems.MotorSubsystem 
+
+
+#Commands
+from commands.MotorCommands import ForwardSpin, ReverseSpin, StopSpin
+
 class RobotContainer:
-    """
-    This class is where the bulk of the robot should be declared.  Since
-    Command-based is a "declarative" paradigm, very little robot logic should
-    actually be handled in the :class:`.Robot` periodic methods (other than
-    the scheduler calls). Instead, the structure of the robot (including
-    subsystems, commands, and button mappings) should be declared here.
-    """
 
     def __init__(self):
-        """
-        The container for the robot. Contains subsystems, user controls,
-        and commands.
-        """
-        # The driver's controller
-        #
-        # It's best not to create controller objects anywhere else.  If your
-        # subsystem needs to access the controller, pass self.stick in to
-        # the subsystem's constructor.
-        #
+
+        #Controllers
         self.stick = commands2.button.CommandXboxController(OP.joystick_port)
         self.PS5 = PS5Controller(OP.joystick_port)
-
         
+        
+        #Subsystems
+        self.motorsub = subsystems.MotorSubsystem.MotorSubsystemClass()
 
-        # The robot's subsystems
-        #
-        ## TODO: Change this for your robot!
-        ##       (Use your subsystems, and change the variable name.)
-        ##
-        #motorsub = subsystems.Motor_ss.Motor_Subsystem()
-        self.motorsub = subsystems.Motor_ss.Motor_Subsystem
 
-        # Configure the button bindings
         self.configureButtonBindings()
 
 
     def configureButtonBindings(self):
-        """
-        Use this method to define your button->command mappings. Buttons can
-        be created via the button factories on
-        commands2.button.CommandGenericHID or one of its subclasses
-        (commands2.button.CommandJoystick or
-        command2.button.CommandXboxController).
-        """
-        ## TODO: Change this for your robot!
-        ##       (Use your commands and subsystems, and bind them to
-        ##       buttons you choose.)
-        ##
-        # run the example command when the left bumper is pressed
-
         #Xbox controller
         #self.stick.leftBumper().whileTrue(ForwardSpin(self.motorsub))
         #self.stick.leftBumper().whileFalse(StopSpin(self.motorsub))
