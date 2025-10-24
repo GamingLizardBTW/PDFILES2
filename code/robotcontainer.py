@@ -11,6 +11,9 @@ import wpilib
 import commands2
 import commands2.button
 
+from commands2.button import Trigger
+
+
 from constants import OP
 import subsystems.Motor_ss 
 from subsystems.Motor_ss import Motor_Subsystem
@@ -18,7 +21,8 @@ from subsystems.Motor_ss import Motor_Subsystem
 import commands.motor_commands
 from commands.motor_commands import ForwardSpin, ReverseSpin, StopSpin
 
-from wpilib import XboxController
+#from wpilib import XboxController
+from wpilib import PS5Controller
 
 class RobotContainer:
     """
@@ -41,6 +45,8 @@ class RobotContainer:
         # the subsystem's constructor.
         #
         self.stick = commands2.button.CommandXboxController(OP.joystick_port)
+        self.PS5 = PS5Controller(OP.joystick_port)
+
         
 
         # The robot's subsystems
@@ -68,10 +74,19 @@ class RobotContainer:
         ##       buttons you choose.)
         ##
         # run the example command when the left bumper is pressed
-        self.stick.leftBumper().whileTrue(ForwardSpin(self.motorsub))
-        self.stick.leftBumper().whileFalse(StopSpin(self.motorsub))
-        self.stick.rightBumper().whileTrue(ReverseSpin(self.motorsub))
-        self.stick.rightBumper().whileFalse(StopSpin(self.motorsub))
+
+        #Xbox controller
+        #self.stick.leftBumper().whileTrue(ForwardSpin(self.motorsub))
+        #self.stick.leftBumper().whileFalse(StopSpin(self.motorsub))
+        #self.stick.rightBumper().whileTrue(ReverseSpin(self.motorsub))
+        #self.stick.rightBumper().whileFalse(StopSpin(self.motorsub))
+        
+        #PS5 controller
+        Trigger(lambda: self.stick.getL1Button()).whileTrue(ForwardSpin(self.motorsub))
+        Trigger(lambda: self.stick.getL1Button()).whileFalse(StopSpin(self.motorsub))
+
+        Trigger(lambda: self.stick.getR1Button()).whileTrue(ReverseSpin(self.motorsub))
+        Trigger(lambda: self.stick.getR1Button()).whileFalse(StopSpin(self.motorsub))
 
 
         # run the example command when the X button is pressed
