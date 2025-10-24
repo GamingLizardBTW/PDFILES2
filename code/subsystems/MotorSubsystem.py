@@ -14,9 +14,7 @@ class MotorSubsystemClass(commands2.Subsystem):
     def __init__(self) -> None:
 
 
-        self.my_motor = phoenix6.hardware.TalonFX(
-            ELEC.my_motor_CAN_ID 
-        )
+        self.my_motor = phoenix6.hardware.TalonFX(ELEC.my_motor_CAN_ID )
 
     def go_forward(self):
         self.my_motor.set(1)
