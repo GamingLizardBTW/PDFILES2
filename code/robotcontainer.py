@@ -26,7 +26,7 @@ class RobotContainer:
     def __init__(self):
 
         #Controllers
-        self.stick = commands2.button.CommandXboxController(OP.joystick_port)
+        #self.stick = commands2.button.CommandXboxController(OP.joystick_port)
         self.PS5 = PS5Controller(OP.joystick_port)
         
         
