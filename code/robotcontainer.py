@@ -45,11 +45,11 @@ class RobotContainer:
         #self.stick.rightBumper().whileFalse(StopSpin(self.motorsub))
         
         #PS5 controller
-        Trigger(lambda: self.PS5.getL1Button()).whileTrue(ForwardSpin(self.motorsub))
-        Trigger(lambda: self.PS5.getL1Button()).whileFalse(StopSpin(self.motorsub))
+        Trigger(lambda: self.PS5.getL1Button()).onTrue(ForwardSpin(self.motorsub))
+        Trigger(lambda: self.PS5.getL1Button()).onFalse(StopSpin(self.motorsub))
 
-        Trigger(lambda: self.PS5.getR1Button()).whileTrue(ReverseSpin(self.motorsub))
-        Trigger(lambda: self.PS5.getR1Button()).whileFalse(StopSpin(self.motorsub))
+        Trigger(lambda: self.PS5.getR1Button()).onTrue(ReverseSpin(self.motorsub))
+        Trigger(lambda: self.PS5.getR1Button()).onFalse(StopSpin(self.motorsub))
 
 
         # run the example command when the X button is pressed
