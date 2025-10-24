@@ -9,15 +9,15 @@ from constants import OP
 
 
 
-from subsystems.MotorSubsystem import MotorSubsystem
+from subsystems.MotorSubsystem import MotorSubsystemClass
 
 
 class  ForwardSpin(commands2.Command):
 
-    def __init__(self, motorsubsystem: MotorSubsystem) -> None:
+    def __init__(self, motorsubsystem: MotorSubsystemClass) -> None:
 
         #self.addRequirements(self.Motor_ss)
-        self.motorsub = MotorSubsystem
+        self.motorsub = MotorSubsystemClass
 
     def initialize(self):
 
@@ -39,10 +39,10 @@ class  ForwardSpin(commands2.Command):
 
 class  ReverseSpin(commands2.Command):
 
-    def __init__(self, motorsubsystem: MotorSubsystem) -> None:
+    def __init__(self, motorsubsystem: MotorSubsystemClass) -> None:
 
         #self.addRequirements(self.Motor_ss)
-        self.motorsub = MotorSubsystem
+        self.motorsub = MotorSubsystemClass
 
     def initialize(self):
 
@@ -66,10 +66,10 @@ class  ReverseSpin(commands2.Command):
 
 class  StopSpin(commands2.Command):
 
-    def __init__(self, motorsubsystem: MotorSubsystem) -> None:
+    def __init__(self, motorsubsystem: MotorSubsystemClass) -> None:
 
         #self.addRequirements(self.Motor_ss)
-        self.motorsub = MotorSubsystem
+        self.motorsub = MotorSubsystemClass
 
     def initialize(self):
 
