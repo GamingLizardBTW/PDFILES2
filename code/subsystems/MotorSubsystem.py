@@ -5,24 +5,24 @@ from wpilib import DigitalInput
 import commands2
 from constants import ELEC
 import phoenix6
-
+import wpimath.controller
+import wpimath.trajectory
 
 
 class MotorSubsystemClass(commands2.Subsystem):
 
     def __init__(self) -> None:
 
-        super().__init__()
 
         self.my_motor = phoenix6.hardware.TalonFX(
             ELEC.my_motor_CAN_ID 
         )
 
     def go_forward(self):
-        self.my_motor.set(ELEC.my_motor_speed)
+        self.my_motor.set(1)
 
     def go_reverse(self):
-        self.my_motor.set(ELEC.my_motor_speed_reverse)
+        self.my_motor.set(2)
 
     def stop(self):
  

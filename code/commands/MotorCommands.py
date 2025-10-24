@@ -21,7 +21,7 @@ class  ForwardSpin(commands2.Command):
 
     def initialize(self):
 
-        logger.info("Forward Command Initialized")
+        logger.info("Forward Command Initialized")  
 
     def execute(self):
         
