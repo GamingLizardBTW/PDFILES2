@@ -17,10 +17,10 @@ class MotorSubsystemClass(commands2.Subsystem):
         #self.my_motor.setNeutralMode(self.brakemode)
 
     def go_forward(self):
-        self.my_motor.set(1.0)
+        self.my_motor.set(ELEC.Reverse)
 
     def go_reverse(self):
-        self.my_motor.set(-1.0)
+        self.my_motor.set(ELEC.Forward)
 
     def stop(self):
  
