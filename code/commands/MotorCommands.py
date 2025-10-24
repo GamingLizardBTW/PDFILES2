@@ -20,7 +20,7 @@ class  ForwardSpin(commands2.Command):
         self.motorsub = motorsubsystem
 
     def initialize(self):
-        self.motorsub.go_forward
+        self.motorsub.go_forward()
         logger.info("Forward Command Initialized")  
 
     #def execute(self):
@@ -44,7 +44,7 @@ class  ReverseSpin(commands2.Command):
         self.motorsub = motorsubsystem
 
     def initialize(self):
-        self.motorsub.go_reverse
+        self.motorsub.go_reverse()
         logger.info("Reverse Command Initialized")
 
     #def execute(self):
@@ -68,7 +68,7 @@ class  StopSpin(commands2.Command):
         self.motorsub = motorsubsystem
 
     def initialize(self):
-        self.motorsub.stop
+        self.motorsub.stop()
         logger.info("Stop Command Initialized")
 
     #def execute(self):
