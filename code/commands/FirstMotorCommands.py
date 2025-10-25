@@ -1,5 +1,5 @@
 import logging
-logger = logging.getLogger("motorsubsystemlogger")
+logger = logging.getLogger("firstmotorsubsystemlogger")
 
 
 
@@ -9,18 +9,19 @@ from constants import OP
 
 
 
-from subsystems.MotorSubsystem import MotorSubsystemClass
+from subsystems.FirstMotorSubsystem import FirstMotorSubsystemClass
 
 
 class  ForwardSpin(commands2.Command):
 
-    def __init__(self, motorsubsystem: MotorSubsystemClass) -> None:
+    def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass) -> None:
 
-        #self.addRequirements(self.Motor_ss)
-        self.motorsub = motorsubsystem
+        
+        self.firstmotorsub = firstmotorsubsystem
+        self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
-        self.motorsub.go_forward()
+        self.firstmotorsub.go_forward()
         logger.info("Forward Command Initialized")  
 
     #def execute(self):
@@ -38,13 +39,14 @@ class  ForwardSpin(commands2.Command):
 
 class  ReverseSpin(commands2.Command):
 
-    def __init__(self, motorsubsystem: MotorSubsystemClass) -> None:
+    def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass) -> None:
 
-        #self.addRequirements(self.Motor_ss)
-        self.motorsub = motorsubsystem
+        
+        self.firstmotorsub = firstmotorsubsystem
+        self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
-        self.motorsub.go_reverse()
+        self.firstmotorsub.go_reverse()
         logger.info("Reverse Command Initialized")
 
     #def execute(self):
@@ -62,13 +64,13 @@ class  ReverseSpin(commands2.Command):
 
 class  StopSpin(commands2.Command):
 
-    def __init__(self, motorsubsystem: MotorSubsystemClass) -> None:
+    def __init__(self, firstmotorsubsystem: FirstMotorSubsystemClass) -> None:
 
-        #self.addRequirements(self.Motor_ss)
-        self.motorsub = motorsubsystem
+        self.firstmotorsub = firstmotorsubsystem
+        self.addRequirements(self.firstmotorsub)
 
     def initialize(self):
-        self.motorsub.stop()
+        self.firstmotorsub.stop()
         logger.info("Stop Command Initialized")
 
     #def execute(self):

@@ -8,20 +8,21 @@ import wpimath.trajectory
 
 from constants import ELEC
 
-class MotorSubsystemClass(commands2.Subsystem):
+
+class FirstMotorSubsystemClass(commands2.Subsystem):
 
     def __init__(self) -> None:
 
 
-        self.my_motor = phoenix6.hardware.TalonFX(ELEC.my_motor_CAN_ID)
+        self.first_motor = phoenix6.hardware.TalonFX(ELEC.first_motor_CAN_ID)
         #self.my_motor.setNeutralMode(self.brakemode)
 
     def go_forward(self):
-        self.my_motor.set(ELEC.my_motor_forward)
+        self.first_motor.set(ELEC.first_motor_forward)
 
     def go_reverse(self):
-        self.my_motor.set(ELEC.my_motor_reverse)
+        self.first_motor.set(ELEC.first_motor_reverse)
 
     def stop(self):
  
-        self.my_motor.set(ELEC.my_motor_stop)
+        self.first_motor.set(ELEC.first_motor_stop)
