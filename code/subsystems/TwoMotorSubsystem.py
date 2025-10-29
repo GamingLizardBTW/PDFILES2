@@ -1,36 +1,29 @@
 import logging
-log = logging.Logger('P212-robot')
-
 import commands2
-from phoenix6.controls import DutyCycleOut
 import phoenix6
-
-
+from phoenix6.controls import DutyCycleOut
 from constants import ELEC
+
+logger = logging.getLogger("TwoMotorSubsystem")
 
 class TwoMotorSubsystemClass(commands2.Subsystem):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.motor1 = phoenix6.hardware.TalonFX(ELEC.first_motor_CAN_ID)
         self.motor2 = phoenix6.hardware.TalonFX(ELEC.second_motor_CAN_ID)
+        self.dco = DutyCycleOut(0)
+        logger.info("TwoMotorSubsystem initialized")
 
-    # Run both motors at the same speed
-    def run_both(self, speed: float):
-        self.motor1.set(DutyCycleOut(speed))
-        self.motor2.set(DutyCycleOut(speed))
+    def run_motor1(self, speed: float):
+        self.motor1.set_control(self.dco.with_output(speed))
+        logger.debug(f"Motor 1 running at speed {speed}")
 
-    # Run only motor1
-    def run_motor1_only(self, speed: float):
-        self.motor1.set(DutyCycleOut(speed))
-        self.motor2.set(DutyCycleOut(0))
+    def run_motor2(self, speed: float):
+        self.motor2.set_control(self.dco.with_output(speed))
+        logger.debug(f"Motor 2 running at speed {speed}")
 
-    # Run only motor2
-    def run_motor2_only(self, speed: float):
-        self.motor1.set(DutyCycleOut(0))
-        self.motor2.set(DutyCycleOut(speed))
-
-    # Stop both motors
     def stop(self):
-        self.motor1.set(DutyCycleOut(0))
-        self.motor2.set(DutyCycleOut(0))
+        self.motor1.set_control(self.dco.with_output(0))
+        self.motor2.set_control(self.dco.with_output(0))
+        logger.debug("Both motors stopped")

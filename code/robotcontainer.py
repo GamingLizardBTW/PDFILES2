@@ -21,7 +21,7 @@ import subsystems.TwoMotorSubsystem
 # Commands
 #from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin
 #from commands.SecondMotorCommands import TriggerSpin
-from commands.TwoMotorCommands import RunBothMotors,RunMotor1Only,RunMotor2Only
+from commands.TwoMotorCommands import DualMotor
 
 class RobotContainer:
 
@@ -46,6 +46,8 @@ class RobotContainer:
     def configureButtonBindings(self):
         
         # PS5 controller bindings
+
+
         # L1 button: first motor forward
         #Trigger(lambda: self.PS5.getL1Button()).onTrue(ForwardSpin(self.firstmotorsub))
         #Trigger(lambda: self.PS5.getL1Button()).onFalse(StopSpin(self.firstmotorsub))
@@ -54,19 +56,9 @@ class RobotContainer:
         #Trigger(lambda: self.PS5.getR1Button()).onTrue(ReverseSpin(self.firstmotorsub))
         #Trigger(lambda: self.PS5.getR1Button()).onFalse(StopSpin(self.firstmotorsub))
 
-        # Hold Cross to run both motors
+        
         Trigger(lambda: self.PS5.getCrossButton()).whileTrue(
-            RunBothMotors(self.twomotorsub)
-        )
-
-        # Hold L1 to run only motor1
-        Trigger(lambda: self.PS5.getL1Button()).whileTrue(
-            RunMotor1Only(self.twomotorsub)
-        )
-
-        # Hold R1 to run only motor2
-        Trigger(lambda: self.PS5.getR1Button()).whileTrue(
-            RunMotor2Only(self.twomotorsub)
+            DualMotor(self.twomotorsub, self.PS5)
         )
 
         

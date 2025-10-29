@@ -1,3 +1,4 @@
+"""
 import logging
 log = logging.Logger('P212-robot')
 import wpilib
@@ -26,3 +27,5 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
     def stop(self):
  
         self.first_motor.set(ELEC.first_motor_stop)
+"""
+

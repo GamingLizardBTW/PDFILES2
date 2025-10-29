@@ -1,3 +1,4 @@
+"""""
 import logging
 log = logging.Logger('P212-robot')
 
@@ -16,9 +17,6 @@ class SecondMotorSubsystemClass(commands2.Subsystem):
         self.request = VoltageOut(0)
 
     def run(self, speed: float):
-        """
-        speed range: -1.0 to +1.0
-        """
         self.second_motor.set_control(self.request.with_output(speed * 12.0))
 
     def go_forward(self):
@@ -29,3 +27,4 @@ class SecondMotorSubsystemClass(commands2.Subsystem):
 
     def stop(self):
         self.run(0.0)
+"""""

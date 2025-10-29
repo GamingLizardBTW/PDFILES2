@@ -1,3 +1,4 @@
+"""
 import logging
 logger = logging.getLogger("secondmotorsubsystemlogger")
 
@@ -32,3 +33,4 @@ class TriggerSpin(commands2.Command):
     def isFinished(self):
         # Never finishes on its own
         return False
+"""
