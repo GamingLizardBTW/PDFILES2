@@ -17,7 +17,7 @@ class DualMotor(commands2.Command):
         logger.info("DualMotorControlCommand initialized")
 
     def execute(self):
-        x_pressed = self.controller.getCrossButton()  # X button on PS5
+        x_pressed = self.controller.getCrossButton()
         l1_pressed = self.controller.getL1Button()
         r1_pressed = self.controller.getR1Button()
 
@@ -33,7 +33,6 @@ class DualMotor(commands2.Command):
             self.twomotorsub.run_motor1(0.0)
             self.twomotorsub.run_motor2(1.0)
         else:
-            # If just X (or both bumpers) pressed → run both
             self.twomotorsub.run_motor1(1.0)
             self.twomotorsub.run_motor2(1.0)
 
